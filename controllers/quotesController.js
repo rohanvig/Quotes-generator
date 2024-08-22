@@ -22,6 +22,7 @@ const getRandomQuote = async (req, res) => {
   }
 };
 
+
 const searchQuotes = async (req, res) => {
   try {
     const { query } = req.query;
@@ -32,7 +33,7 @@ const searchQuotes = async (req, res) => {
         { tags: { $regex: query, $options: "i" } },
       ],
     });
-    res.json(quotes);
+    res.render('search',{quotes})
   } catch (error) {
     res.status(500).json({ error: "Error searching quotes" });
   }

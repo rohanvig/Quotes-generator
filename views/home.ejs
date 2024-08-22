@@ -1,19 +1,12 @@
 <%- include('partials/header'); -%>
 
-
+  
 <header>
-  <form action="/search" method="get" id="searchForm">
-    <input
-      type="text"
-      name="query"
-      placeholder="Search for quotes..."
-      id="searchInput"
-    />
-    <button type="submit" class="searchButton">Search</button>
-  </form>
   <div class="smoothie">
     <img src="/smoothie.png" alt="">
   </div>
+  
+
   <div class="headings">
     <h2>Quotes Generator</h2>
     <a href="/api/getallquotes" class="btn">Sample quotes</a>
