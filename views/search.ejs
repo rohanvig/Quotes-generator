@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Quotes</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <form action="/api/search" method="get" id="form1">
+      <input
+        type="text"
+        name="query"
+        placeholder="Search for quotes..."
+        id="input1"
+      />
+      <button type="submit" class="nextsearch">Search</button>
+    </form>
+    <div id="results">
+      <% if (quotes.length === 0) { %>
+      <p>No quotes found.</p>
+      <% } else { %> <% quotes.forEach(quote => { %>
+      <div>"<%= quote.text %>" — <%= quote.author %></div>
+      <% }) %> <% } %>
+    </div>
+  </body>
+</html>
