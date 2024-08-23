@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Quote</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Add a New Quote</h1>
+      <form action="/api/addQuote" method="POST">
+        <div class="form-group">
+          <label for="text">Quote Text:</label>
+          <textarea name="text" id="text" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="author">Author:</label>
+          <input type="text" name="author" id="author" required />
+        </div>
+        <div class="form-group">
+          <label for="tags">Tags (comma separated):</label>
+          <input type="text" name="tags" id="tags" />
+        </div>
+        <button type="submit">Add Quote</button>
+      </form>
+
+      <!-- Display success message -->
+      <% if (typeof success !== 'undefined') { %>
+      <p class="success-message"><%= success %></p>
+      <% } %>
+
+      <!-- Display error message -->
+      <% if (typeof error !== 'undefined') { %>
+      <p class="error-message"><%= error %></p>
+      <% } %>
+      <a href="/" class="btn">Back to home</a>
+    </div>
+  </body>
+</html>

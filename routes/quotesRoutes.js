@@ -11,6 +11,7 @@ const {
   deleteQuote,
   getAdminQuotes,
   getAdminUsers,
+  getaddquote
 } = require('../controllers/quotesController');
 
 // Public access routes
@@ -19,6 +20,7 @@ router.get('/getRandomQuote', getRandomQuote); // Public
 router.get('/search', searchQuotes); // Public
 
 // Authenticated user routes
+router.get('/addQuote',requireAuth,requireAuthorizedUser,getaddquote)
 router.post('/addQuote', requireAuth, requireAuthorizedUser, addQuote); // Add quote logic
 router.delete('/deleteQuote/:id', requireAuth, requireAuthorizedUser, deleteQuote); // Delete quote logic
 

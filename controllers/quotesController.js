@@ -22,7 +22,6 @@ const getRandomQuote = async (req, res) => {
   }
 };
 
-
 const searchQuotes = async (req, res) => {
   try {
     const { query } = req.query;
@@ -33,7 +32,7 @@ const searchQuotes = async (req, res) => {
         { tags: { $regex: query, $options: "i" } },
       ],
     });
-    res.render('search',{quotes})
+    res.render("search", { quotes });
   } catch (error) {
     res.status(500).json({ error: "Error searching quotes" });
   }
@@ -44,7 +43,7 @@ const addQuote = async (req, res) => {
     const { text, author, tags } = req.body;
     const newQuote = new Quote({ text, author, tags });
     await newQuote.save();
-    res.status(201).json(newQuote);
+    res.render("addQuote", { success: "Quote has been created successfully!" });
   } catch (error) {
     res.status(500).json({ error: "Error adding quote" });
   }
@@ -77,6 +76,9 @@ const getAdminUsers = async (req, res) => {
     res.status(500).json({ error: "Error fetching users for admin" });
   }
 };
+const getaddquote = (req, res) => {
+  res.render("addquote");
+};
 
 module.exports = {
   getAllQuotes,
@@ -86,4 +88,5 @@ module.exports = {
   deleteQuote,
   getAdminQuotes,
   getAdminUsers,
+  getaddquote,
 };

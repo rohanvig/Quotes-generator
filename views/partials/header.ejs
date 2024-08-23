@@ -5,37 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quotes Generator</title>
     <link rel="icon" href="/computer.png" type="image/x-icon" />
-    <!-- Corrected rel attribute -->
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <header>
-      
-    </header>
-    <nav>
-      <h1><a href="/">Homepage</a></h1>
-      <ul>
-        <% // Conditional rendering to display login/signup links based on user authentication status %> 
-        <li class="search">
-       
-            <form>
-              <input
+    <header></header>
+    <nav
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #f8f8f8;
+      "
+    >
+      <h1 style="margin: 0"><a href="/">Homepage</a></h1>
+      <ul style="display: flex; list-style: none; margin: 0; padding: 0">
+        <li class="search" style="margin-right: 20px">
+          <form style="display: flex">
+            <input
               type="text"
               name="query"
               placeholder="Search for quotes..."
               id="searchInput"
+              style="padding: 5px; margin-right: 5px"
             />
-            <input type="submit" value="search"  formaction="/api/search" formmethod="get" class="btn"/>
-            </form>
-         
-       
-      </li>
+            <input
+              type="submit"
+              value="Search"
+              formaction="/api/search"
+              formmethod="get"
+              class="btn"
+              style="padding: 5px 10px"
+            />
+          </form>
+        </li>
         <% if (user) { %>
-        <li>Welcome, <%= user.fullname %></li>
-        <li><a href="/logout">Log out</a></li>
+        <li style="margin-right: 20px">Welcome, <%= user.email %></li>
+        <li><a href="/logout" style="padding: 5px 10px">Log out</a></li>
         <% } else { %>
-        <li><a href="/login">Log in</a></li>
-        <li><a href="/signup" class="btn">Sign up</a></li>
+        <li style="margin-right: 20px">
+          <a href="/login" style="padding: 5px 10px">Log in</a>
+        </li>
+        <li>
+          <a
+            href="/signup"
+            class="btn"
+            style="
+              padding: 5px 10px;
+              background-color: #007bff;
+              color: white;
+              border-radius: 5px;
+            "
+            >Sign up</a
+          >
+        </li>
         <% } %>
       </ul>
     </nav>
